@@ -1,0 +1,30 @@
+{
+	"name": "osenco/sendy",
+	"description": "Sendy API PHP SDK",
+	"type": "library",
+	"keywords": [
+		"sendy",
+		"newsletter",
+		"wrapper",
+		"api"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Osen Concepts",
+			"email": "hi@osen.co.ke"
+		}
+	],
+	"config": {
+		"sort-packages": true,
+		"optimize-autoloader": true
+	},
+	"autoload": {
+		"psr-4": {
+			"Sendy\\": "src/"
+		}
+	},
+	"require": {
+		"rmccue/requests": "^1.7"
+	}
+}
