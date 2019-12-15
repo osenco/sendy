@@ -8,8 +8,8 @@
  * @package Sendy
  * @since 1.0.0
  */
-namespace SENDY;
-use Requests;
+namespace Osen;
+
 use Exception;
 // Helps with the CORS issues.
 header( 'Access-Control-Allow-Origin: *' );
@@ -22,7 +22,7 @@ header( 'Access-Control-Allow-Credentials: true' );
  *
  * @since 1.0.0
  */
-class API {
+class Sendy {
 	/**
 	 * Console Log.
 	 *
@@ -308,11 +308,6 @@ class API {
 		$postData = http_build_query( $content );
 		// URL to send POST to.
 		$postUrl = $this->sendyUrl . '/' . $route;
-		if ( class_exists( 'Requests' ) ) {
-			// Send POST.
-			$request     = Requests::post( $postUrl, [], $postData );
-			$apiResponse = $request->body;
-		} else {
 			// Let's cURL.
 			// phpcs:disable -- not WP.
 			$ch = curl_init( $postUrl );
@@ -326,7 +321,6 @@ class API {
 			curl_setopt( $ch, CURLOPT_POSTFIELDS, $postData );
 			$apiResponse = curl_exec( $ch );
 			curl_close( $ch );
-		}
 		// API apiResponse.
 		return $apiResponse;
 	}
